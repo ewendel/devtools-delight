@@ -1,0 +1,38 @@
+Hei og velkommen
+Om meg
+Hvorfor denne workshopen?
+Hvorfor kom akkurat DU? - spm til salen
+
+Weben - fra statiske dokumenter til verdens største applattform
+Statistikk - web vs native
+Progressive enhancement - graceful degradation
+HTML 
+	skjermbilder av hvordan et webside deles inn i "boxer"
+	en boks = en tagg, et element, whatever
+	finnes mange typer tags
+	vise noen vanlige typer
+	syntax
+Browser -> HTTP -> HTML
+	vise hvordan man inspirerer HTML-en
+	oppgaver: inspisere tre sider de liker
+		kikke rundt
+		identifisere tre ting de ikke forstår og lage spørsmål
+
+HTML er kun innhold, ikke styling
+	styling kommer fra CSS
+	CSS hentes inn via tags i HTML-en
+
+CSS - basics - selektor, properties, values
+	hvilke properties og values finnes?
+	vise hvordan man inspiserer CSS
+	vise hvordan man endrer en regel
+	vise hvordan man fjerner en regel
+	vise hvordan man legger til en regel
+
+Mer CSS
+	specificity - hva hvis flere regler har det samme
+	box model?
+	margin - padding - border
+	fonter (ikke alle fonter er tilgjegnelige, webfonts etc)
+
+	

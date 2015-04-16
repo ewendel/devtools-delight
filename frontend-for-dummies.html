@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Nettleseren & HTML - Kurs i grensesnittsprogrammering</title>
+    <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400|Dosis:300,400|Source+Code+Pro:200,300,400,400bold' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="remark/kimjoe.css">
+    <style type="text/css" media="screen">
+      .loud {font-size:2em;}
+
+      blockquote, .loud {font-size:2em;}
+      blockquote cite, .loud small {font-size:.7em;color:#FD5158;}
+      .remark-slide .overlay {
+        text-align: center;
+      }
+      .remark-slide .overlay h1 > span {background:transparent !important;}
+      .remark-slide .overlay h1:before {border-top:none !important;}
+    </style>
+    <style type="text/css" media="screen">
+      @font-face {
+        font-family: 'Inconsolata';
+        font-style: normal;
+        font-weight: 400;
+        src: url('../remark/Inconsolata-Regular.ttf'),
+      }
+      .left-duck img { float: left; }
+      .right-duck img { float: right; }
+
+      #slideshow .slide .content.front-page h1 { width: 100%; }
+      .slide p { padding: 0; margin: 1.1em 0; }
+      .slide ul { padding: 0; margin: 1.1em 0; }f
+      .slide img { max-width: 100%; max-height: 600px; }
+      .slide .big { font-size: 4em; }
+      #slideshow .slide .content ul li { padding-left: 1.3em; }
+      #slideshow .slide .attr a { color:#333; font-size:0.8em; }
+      #slideshow .slide .fullscreen img { width:100%; height:100%; position:absolute; top:40px; left:0; }
+      .slide span.alt { color:#FD5158; }
+      .jquery { background-color: #1E2837; }
+      .nodejs { background-color: #3F4239; }
+      #slideshow .position { display: none; }
+
+    /*Egne ninjatriks:*/
+
+      .css-example {border:1px solid rgba(0,0,0,.2); font-size:.8em;padding:1em;}
+      .css-example .pbox {width:100px;height:100px;line-height: 2;text-align: center;font-size: 3em}
+      .css-example .pbox:nth-child(2) {color:red;}
+      .css-example .pbox:nth-child(3) {color:white;}
+      .css-eaxample-clear:after, .group:after {
+       content: ".";
+       visibility: hidden;
+       height: 0;
+       display: block;
+    }
+
+    .specificity {display:inline-block;}
+    .specificity tbody {background:#fff;color:#000;}
+    .specificity td { height:120px;width:60px;padding:20px;border:4px solid #ccc;color:000;font-size:2em;text-align:center;
+    2
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.16) 0%, #FDF6E3 49%, rgba(0,0,0,0.12) 100%); /* FF3.6 */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.16)), color-stop(49%,#FDF6E3), color-stop(100%,rgba(0,0,0,0.12))); /* Chrome,Safari4 */
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.16) 0%,#FDF6E3 49%,rgba(0,0,0,0.12) 100%); /* Chrome10,Safari5.1 */
+    background: -o-linear-gradient(top, rgba(0,0,0,0.16) 0%,#FDF6E3 49%,rgba(0,0,0,0.12) 100%); /* Opera 11.10 */
+    background: -ms-linear-gradient(top, rgba(0,0,0,0.16) 0%,#FDF6E3 49%,rgba(0,0,0,0.12) 100%); /* IE10 */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.16) 0%,#FDF6E3 49%,rgba(0,0,0,0.12) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#29000000', endColorstr='#1f000000',GradientType=0 ); /* IE6-9 */
+
+    }
+
+    .gradient { background-image:-webkit-linear-gradient(red, green, blue, purple, orange); }
+
+    .gradient * { color:#fff !important; }
+
+    /* class: middle center h1 span { background:none !important; } */
+
+    class: middle center.shadow { background:#333; text-shadow:2px 2px 2px rgba(0,0,0,0.3); }
+    class: middle center.shadow .shadow1 { background: #444; padding:1em; box-shadow:0 2px 3px rgba(0,0,0,0.2); }
+
+    .caniuse { background: #ede1cc !important; }
+
+    a.two { font-size:3em; display: block; text-align: left; color:#fff !important; line-height: 1.3; }
+
+    .spinners {
+        width:500px;
+        height:600px;
+        margin:0 auto;
+        position: relative;
+    }
+
+    .anim-steps .spinners {
+        height:250px;
+    }
+
+    .spinner1 {
+        position: absolute;
+        top:50%;
+        left:50%;
+        margin:-80px 0 0 -80px;
+
+        border:20px solid #228fd3;
+        border-right:20px solid #000;
+        border-left:20px solid #000;
+        border-radius:160px;
+        width:160px;
+        height:160px;
+        -webkit-animation:rotation 2s infinite linear;
+        -moz-animation:rotation 2s infinite linear;
+        -ms-animation:rotation 2s infinite linear;
+        -o-animation:rotation 2s infinite linear;
+        animation:rotation 2s infinite linear;
+    }
+
+    .spinner2 {
+        position: absolute;
+        top:50%;
+        left:50%;
+        margin:-40px 0 0 -40px;
+        border:20px solid #228fd3;
+        border-right:20px solid #000;
+        border-left:20px solid #000;
+        border-radius:80px;
+        width:80px;
+        height:80px;
+        -webkit-animation:rotation2 2s infinite linear;
+        -moz-animation:rotation2 2s infinite linear;
+        -ms-animation:rotation2 2s infinite linear;
+        -o-animation:rotation2 2s infinite linear;
+        animation:rotation2 2s infinite linear;
+    }
+
+    @-webkit-keyframes rotation {
+        from { -webkit-transform: rotate(0deg); }
+        to { -webkit-transform: rotate(359deg); }
+    }
+
+    @-webkit-keyframes rotation2 {
+        from { -webkit-transform: rotate(0deg); }
+        to { -webkit-transform: rotate(-359deg); }
+    }
+
+    .fs { font-size:1.6em; }
+    .f1 { font-family: 'Snowburst One', cursive; }
+    .f2 { font-family: 'Griffy', cursive; }
+
+    .invert { background:#fff; }
+    .imgtranslate img { -webkit-transform: perspective(600px) rotateY(20deg) scale(0.8) translateX(60px); }
+    iframe { border:none; }
+    .anim a { -webkit-transition: color 200ms ease-in-out; display: block; font-size: 3em; text-align: center; margin:1em 0; }
+    .anim a:hover { color:#fff !important; text-decoration: none !important; }
+    .imganim img { -webkit-transition: all 300ms ease-in-out; }
+    .imganim img:hover { -webkit-transform: perspective(600px) rotateY(20deg) scale(0.8) translateX(60px); }
+    .bb-content {
+      font-size: 19px;
+    }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: fullscreen
+
+![code](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/code.jpeg)
+
+<div class="overlay loud" style="top: 55%">
+<p>
+    Frontendutvikling for dummies
+    <small style="display:block;">Fagkveld 16. april 2015</small>
+</p>
+</div>
+
+???
+
+Hei og velkommen!
+Vi skal gjennom HTML, CSS og JS på åtte timer.
+Da vil det nødvendigvis gå fort, men forhåpentligvis har vi laget et opplegg hvor d går an å henge med likevel.
+Kurset er delt inn i korte presentasjonsbiter for hvert tema hvor dere gjør praktiske oppgaver etterpå.
+Det er lagt opp til at man ikke kan noe fra før.
+
+---
+
+class: middle center cv
+
+![erik](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/erik-kort.png)
+
+---
+
+class: red agenda
+
+# Mål:
+
+#### forstå hvordan en webside er bygget opp
+#### kunne gjøre endringer i tekstlig innhold
+#### kunne legge til, fjerne og skjule innhold
+#### kunne skru av og på eksisterende styling
+#### kunne legge til ny styling på elementer
+#### forstå hvordan css-selektorer virker
+
+---
+
+class: middle center
+
+# Disclaimer
+
+---
+
+class: middle center
+
+# Motivasjon
+
+---
+
+
+class: prereqs center middle
+
+![](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/chrome-logo.jpeg)
+
+---
+
+class: fullscreen middle
+![](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/browser_uglysite_ie.jpg)
+
+---
+
+class: fullscreen middle
+![](fb.jpg)
+
+---
+
+class: center middle red
+
+![mac_pc](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/mac_pc.png)
+
+# Web: write once, run anywhere
+
+---
+
+class: middle center red
+
+![browsers](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/browsers.png)
+
+## Nettleserstøtte og standardisering
+
+.source[http://en.wikipedia.org/wiki/History_of_the_web_browser ]
+
+---
+
+class: fullscreen middle
+
+![](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/browser_escalator.jpeg)
+<div class="overlay loud" style="top:50%">
+  <p>
+      An escalator can never break, <br />
+      it can only become stairs.
+      <small style="display:block;">Mitch Hedberg</small>
+  </p>
+</div>
+
+.source[http://flic.kr/p/wzHU]
+
+---
+class: fullscreen middle
+
+![](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/browser_moped.jpeg)
+
+<div class="overlay loud" style="top:71%">
+  <p>
+      Moped: Pedaler &amp; motor
+      <small style="display:block;">Progressive enhancement</small>
+  </p>
+</div>
+
+.source[http://flic.kr/p/4W4qfx]
+
+---
+
+class: middle center
+
+# Men hva består en nettside av?
+
+---
+
+class: middle center
+
+# HTML
+
+HTML beskriver strukturen og innholdet på en webside.
+
+# CSS
+
+CSS beskriver hvordan innholdet skal se ut.
+
+# JavaScript
+
+JS gir oss interaktivitet på sidene.
+
+???
+
+- Vi skal nå gå gjennom hver av disse for seg og sørge for at vi forstår de grunnleggende konseptene og prinsippene
+
+---
+
+class: inverse middle center
+
+.center[![Layered cake](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/browser_layered_cake.jpeg)]
+
+.source[http://www.alistapart.com/articles/understandingprogressiveenhancement/ ]
+
+---
+
+class: fullscreen
+![](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/html.jpeg)
+
+.source[http://flic.kr/p/5HzQsy ]
+
+<div class="overlay loud" style="top:72%">
+  <p>
+      HTML
+      <small style="display:block;">Innhold og struktur</small>
+  </p>
+</div>
+
+---
+
+# HTML
+
+&nbsp;
+
+HTML beskriver strukturen og innholdet til en nettside.
+
+Denne strukturen brukes av CSS og JS.
+
+&nbsp;
+
+HTML sier ingenting om utseende.
+
+HTML sier ingenting om oppførsel.
+
+&nbsp;
+
+HTML er ikke et programmeringsspråk
+
+HTML er et markeringsspråk som beskriver semantikken til et dokument.
+
+---
+
+# Tags og attributter
+
+    <!doctype html>
+
+    <html lang="en">
+        <head>
+
+            <meta charset="utf-8">
+            <title>En enkel HTML-side</title>
+
+        </head>
+        <body>
+            <div class="article">
+                <h1>Velkommen til min flotte nettside!</h1>
+                <p>Her er litt mer informasjon.</p>
+            </div>
+            <div class="footer">
+                <a href="http://google.com">Søk</a>
+            </div>
+        </body>
+    </html>
+
+---
+
+# HEAD
+
+Inneholder metadata og includes
+
+    <head>
+        <meta http-equiv="Content-Type"
+              content="text/html; charset=utf-8" />
+        <title>My Awesome Web App</title>
+        <script src="scripts.js" type="text/javascript">
+        </script>
+        <link href="https://github.com/stylesheet.css"
+              type="text/css" rel="stylesheet"/>
+    </head>
+
+---
+
+class: middle center
+
+# Chrome DevTools
+
+![devtools](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/devtools.jpg)
+
+Cmd + Alt + J
+
+???
+
+www.ulv.no
+Nettverkstrafikk
+Endre
+Legge til
+Skjule (H)
+Slette
+( angring med ctrl+z )
+
+---
+
+class: center middle
+
+# Semantikk
+
+## html, body, div, span, h1, a, p, ... wtf
+
+Semantikk betyr at typen til en HTML-tagg sier noe om hva slags innhold den har.
+
+???
+
+Viktig for f.eks Universell Utforming og søkemotorer
+
+---
+
+# HTML5
+
+Mer semantisk riktig HTML
+
+    <div id="header">…</div>
+
+    <div class="section"></div>
+
+    <div id="navigation">…</div>
+
+    <div class="article"></div>
+
+    <div id="sidebar"></div>
+
+---
+
+# HTML5
+
+Mer semantisk riktig HTML
+
+    <div id="header">…</div> &mdash; <header>…</header>
+
+    <div class="section"></div> &mdash; <section>…</section>
+
+    <div id="navigation">…</div> &mdash; <nav>…</nav>
+
+    <div class="article"></div> &mdash; <article>…</article>
+
+    <div id="sidebar"></div> &mdash; <aside>…</aside>
+
+
+
+---
+
+class: fullscreen
+
+![HTML vs HTML5](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/HTML-HTML5.jpg)
+
+.source[Elijah Manor / http://i.imgur.com/2Kq6Y.jpg]
+
+---
+
+# Vanlige elementer
+
+    // Semantiske containere
+    section, article, aside, header, footer, nav, main, p
+
+    // Ikke-semantiske containere
+    div, span
+
+    // Lenke
+    a
+
+    // Lister
+    ul, ol, li
+
+    // Overskrifter
+    h1 - h6
+
+    // Skjemaelementer
+    form, input, select, option
+
+### Bruk Mozillas ressursside for å lese om de forskjellige elementene
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+
+---
+
+class: yellow middle center
+
+![devtools](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/devtools.jpg)
+
+## Oppgave 1: Bli kjent med Chrome Dev Tools (15 min)
+
+###### Inspiser HTML-en på tre nettsteder du liker
+###### Identifiser tre ting du ikke skjønner, som ser rart ut eller som du lurer på
+###### www.ulv.no - sett inn et mye fetere ulvebilde og endre "ålreit" til "kul"
+###### Skjul teksten om domeneshop.no
+
+???
+
+---
+
+class: red agenda
+
+# Mål:
+
+#### ~~forstå hvordan en webside er bygget opp~~
+#### ~~kunne gjøre endringer i tekstlig innhold~~
+#### ~~kunne legge til, fjerne og skjule innhold~~
+#### kunne skru av og på eksisterende styling
+#### kunne legge til ny styling på elementer
+#### forstå hvordan css-selektorer virker
+
+---
+
+class: fullscreen
+
+![CSS](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/101/css-gangnam.jpg)
+
+<div class="overlay loud" style="text-align: center; top: 70%">
+<p>
+    Cascading Style Sheets
+    <small style="display:block;">the love/hate-relationship</small>
+</p>
+</div>
+
+???
+
+ja, del to, css.
+
+---
+
+class: middle center
+
+HTML beskriver strukturen og innholdet til en nettside.
+
+CSS beskriver derimot hvordan innholdet *ser ut*.
+
+---
+
+class: middle fullscreen
+
+![NTNU](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/ntnu-style-off.png)
+
+
+---
+
+class: middle fullscreen
+
+![NTNU](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/ntnu-style-on.png)
+
+
+???
+
+CSS fungerer slik at man setter en eller flere CSS-egenskaper fra en mengde med godkjente properties, og disse settes for å gjelde på et eller flere HTML-elementer.
+
+Koden ser slik ut: (neste slide)
+
+---
+
+class: middle center
+
+## CSS *påføres* ét eller flere HTML-elementer
+
+---
+
+class: middle center
+
+# selector {property:value}
+
+
+---
+
+# CSS Selectors
+
+    body { padding:0 }   
+
+    .ninja {color:black; visibility:hidden}
+    
+    #submarine { color: yellow; position:absolute; bottom: 0 }
+
+---
+
+# HTML-attributter
+
+    <div class="article">
+        <h1>Velkommen til min flotte nettside!</h1>
+        <p>Her er litt mer informasjon.</p>
+        <img src="ulv.jpg" width=250 heigth=25 />
+    </div>
+    <div class="footer">
+        <a id="search" href="http://google.com">Søk</a>
+    </div>
+
+---
+
+# CSS Selectors
+
+    /* <body>...</body> */
+    body { padding:0 }   
+
+    /* <div class="ninja">...</div> */
+    .ninja {color:black; visibility:hidden}
+    
+    /* <div id="submarine">...</div> */
+    #submarine { color: yellow; position:absolute; bottom: 0 }
+
+
+---
+
+# CSS Selectors
+
+    body { 
+      padding:0;
+    }   
+
+    .ninja {
+      color:black; 
+      visibility:hidden;
+    }
+    
+    #submarine { 
+      color: yellow; 
+      position:absolute; 
+      bottom: 0;
+    }
+
+
+---
+
+
+
+#CSS Selectors
+
+    element   
+
+    .class
+
+    #id
+
+    #id .class element              /* nøsting av forskjellige selektorer */
+
+    .class1.class2 .class3          /* ? */
+
+    element .class #id              /* wtf */
+
+    e:active, e:hover, e:focus      /* match basert på interaksjon */
+
+    e[foo]                          /* matcher elementer med attr "foo", uansett verdi */
+
+    e[foo="warning"]                /* ? */     
+
+    e:first-child                   /* matcher e når e er første barn av sin forelder */
+
+    e:last-child                    /* ? */
+
+    e:first-of-type                 /* ? */
+
+
+&nbsp;
+
+[https://developer.mozilla.org/en-US/docs/CSS/Getting_Started/Selectors](https://developer.mozilla.org/en-US/docs/CSS/Getting_Started/Selectors)
+
+---
+
+class: middle center
+
+![devtools](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/devtools.jpg)
+
+
+???
+
+Vise hvordan vi inspiserer CSS
+Skru av og på stilregler
+Vise hva som er selektor
+Vise endring av en verdi
+---
+
+class: yellow middle center
+
+![devtools](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/devtools.jpg)
+
+## Oppgave 2: CSS i Dev Tools (10 min)
+
+##### Velg et nettsted du liker, og
+###### inspiser stilregler til minst ti forskjellige (HTML-)elementer
+###### skriv ned tre forskjellige selektorer du har funnet (det som velger -hva- som skal stiles)
+###### Skru litt diverse stilregler av og på og se hva endringen blir
+
+???
+
+---
+
+class: red agenda
+
+# Mål:
+
+#### ~~forstå hvordan en webside er bygget opp~~
+#### ~~kunne gjøre endringer i tekstlig innhold~~
+#### ~~kunne legge til, fjerne og skjule innhold~~
+#### ~~kunne skru av og på eksisterende styling~~
+#### kunne legge til ny styling på elementer
+#### forstå hvordan css-selektorer virker
+
+---
+
+# CSS properties
+
+    height:   20px;                                     /* Dimensjoner */
+    width:    30px;
+
+    position: absolute | static | relative | fixed;     /* Posisjonering */
+    top:      10px;
+    right:    10px;
+    bottom:   10px;
+    left:     10px;
+
+    display:  inline | block | inline-block | none;     /* Dokumentflyt */
+
+    float:    left;
+
+    margin:   10px 10px 10px 10px;                      /* Spacing */
+    padding:  10px 10px 10px 10px;
+    border:   1px solid black;
+    outline:  1p solid yellow;
+
+    text-align:     center;                             /* Horisontal posisjonering */
+    margin:         0 auto;                             /* ( auto = all tilgjengelig plass ) */
+
+    vertical-align: middle;                             /* Vertikal posisjonering */
+
+    color:            yellow | #a0b2c7 | rgb(150, 100, 255) | rgba(150, 100, 255, 0.5);
+    background-color: black | #000 | rgb(255, 255, 255) | rgba(255, 255, 255, 0.5);
+    font-size:        12px;
+    font-family:      'My Awesome Custom Font';
+    font-style:       italic;
+    text-transform:   uppercase;
+    text-shadow:      1px 1px 1px rgba(0,0,0,0.1);
+    box-shadow:       0 2px 3px rgba(0,0,0,0.2);
+
+
+
+---
+
+class: middle center inverse
+
+![Standardfonts](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/fonts.png)
+
+---
+
+  # Document flow
+
+Blokkelementer
+
+    div, p, article, section, h1-h6, form, header, nav, ul, li
+
+Inline elementer
+
+    span, a, img, b, em i, cite, mark, code
+
+---
+
+class: middle fullscreen blackheader
+
+![Boxes](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/101/boxes.jpg)
+<div class="" style="position:absolute;top:5%;left:5%;">
+<h1>&nbsp;CSS Box Model&nbsp;</h1>
+</div>
+
+
+<!--https://developer.mozilla.org/en-US/docs/CSS/box_model-->
+<div class="source">
+http://flic.kr/p/7v9E6p
+</div>
+
+---
+class:
+
+#Box model
+
+     div { width: 180px}
+
+&nbsp;
+
+<div class="border-box bb-content" style="width:180px;height:180px;border:1px solid;margin:0 auto; margin-top:100px;">
+Det ble stille og neandertaleren viste hvordan den langhårete krepsen fungerte. En sebra degraderte astronauten uansvarlig. 
+</div>
+
+
+
+---
+class: whitebg
+
+#Box model
+
+     div { width: 180px; padding:40px} /* Ny bredde: 180 + 40 + 40 = 260 */
+
+&nbsp;
+
+<div class="border-box bb-padding" style="padding:40px;width:182px;margin:0 auto;margin-top:60px;background:rgba(241, 255, 131, 1)">
+<div class="border-box bb-content" style="width:180px;height:180px;border:1px solid;">
+Det ble stille og neandertaleren viste hvordan den langhårete krepsen fungerte. En sebra degraderte astronauten uansvarlig. 
+</div>
+</div>
+
+
+
+
+
+---
+class:
+
+#Box model
+
+     div { width: 180px; padding:40px; border: 10px} /* Ny bredde: 260 + 10 + 10 = 280*/
+
+&nbsp;
+
+
+<div class="border-box bb-padding" style="padding:40px;width:182px;margin:0 auto;margin-top:50px;background:rgba(241, 255, 131, 1);border:10px solid;">
+<div class="border-box bb-content" style="width:180px;height:180px;border:1px solid;">
+Det ble stille og neandertaleren viste hvordan den langhårete krepsen fungerte. En sebra degraderte astronauten uansvarlig. 
+</div>
+</div>
+
+---
+
+#Box model
+
+     div { width: 180px; padding:40px; border: 10px; margin: 20px} /*box + margin = 320*/
+
+&nbsp;
+
+<div style="width:282px;padding:20px;border:2px dashed rgba(0,0,0,.2);margin: 0 auto;margin-top:28px">
+<div class="border-box bb-padding" style="padding:40px;width:182px;margin:0 auto;background:rgba(241, 255, 131, 1);border:10px solid;">
+<div class="border-box bb-content" style="width:180px;height:180px;border:1px solid;">
+Det ble stille og neandertaleren viste hvordan den langhårete krepsen fungerte. En sebra degraderte astronauten uansvarlig. 
+</div>
+</div>
+</div>
+
+---
+
+class: middle fullscreen
+
+![Escalator](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/catbox.jpg)
+<div class="overlay" style="top: 78%;">
+  <h1 style="padding: 0px;"> BOX-SIZING </h1>
+</div>
+
+<div class="source">
+http://www.mrwallpaper.com/wallpapers/Cat-Box.jpg
+</div>
+
+---
+class: whitebg
+
+#Box model
+
+     div { width: 180px; padding:40px; border: 10px; margin: 20px} /*box + margin = 320*/
+
+&nbsp;
+
+<div style="width:282px;padding:20px;border:2px dashed rgba(0,0,0,.2);margin: 0 auto;margin-top:28px">
+<div class="border-box bb-padding" style="padding:40px;width:182px;margin:0 auto;background:rgba(241, 255, 131, 1);border:10px solid;">
+<div class="border-box bb-content" style="width:180px;height:180px;border:1px solid;">
+Det ble stille og neandertaleren viste hvordan den langhårete krepsen fungerte. En sebra degraderte astronauten uansvarlig.
+</div>
+</div>
+</div>
+
+---
+
+# Shorthand notation
+
+      div {
+        margin: 10px 15px 25px 10px; 
+             /* top right left bottom */
+
+        margin-bottom: 10px;
+
+        margin: 10px 20px;
+        /* top&bottom left&right */            
+
+        margin: 10px 20px 15px;
+        /* top left&right bottom */            
+      }
+
+---
+
+class: middle fullscreen
+
+<div class="hl-text" style="position:absolute;top:20%;right:17%;z-index: 5">
+<h1 style="margin: 0; padding: 10px; font-weight: normal; font-style: none;">&nbsp;Floating&nbsp;</h1>
+</div>
+
+![Float](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/101/css-rubber-ducks.jpg)
+
+<div class="source">
+http://flic.kr/p/a6okjV
+</div>
+
+
+---
+class: whitebg
+
+# Eksempel
+
+    img {}
+
+<div style="border:1px solid rgba(0,0,0,.2); font-size:.8em;padding:1em;">
+    ![](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/101/css-rubber-duck-small.jpg")
+<h3>Pusekatt brakk</h3>
+<p>
+En gitarist spillte veldig elegant. Sjeiken dro en purk til han snakket høflig gjennom den lysegrønne busken. Da imponerte pusekatten ei lærerinne uansvarlig. Det ble stille og elgen viste hvordan den svære sauen fungerte. Sløve sebraer fyllte luften, og sabeltanntigeren løp over en skiftenøkkel. 
+</p>
+
+</div>
+
+---
+class: whitebg
+
+# Eksempel
+
+    img {float:left}
+  
+
+<div class="left-duck">
+    ![](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/101/css-rubber-duck-small.jpg")
+<h3>Pusekatt brakk</h3>
+<p>
+En gitarist spillte veldig elegant. Sjeiken dro en purk til han snakket høflig gjennom den lysegrønne busken. Da imponerte pusekatten ei lærerinne uansvarlig. Det ble stille og elgen viste hvordan den svære sauen fungerte. Sløve sebraer fyllte luften, og sabeltanntigeren løp over en skiftenøkkel. 
+</p>
+
+</div>
+
+---
+class: whitebg
+
+# Eksempel
+
+    img {float:right}
+  
+
+<div class="right-duck">
+    ![](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/101/css-rubber-duck-small.jpg")
+<h3>Pusekatt brakk</h3>
+<p>
+En gitarist spillte veldig elegant. Sjeiken dro en purk til han snakket høflig gjennom den lysegrønne busken. Da imponerte pusekatten ei lærerinne uansvarlig. Det ble stille og elgen viste hvordan den svære sauen fungerte. Sløve sebraer fyllte luften, og sabeltanntigeren løp over en skiftenøkkel. 
+</p>
+
+</div>
+
+---
+class: whitebg
+
+#Floating layout
+
+    article, aside {margin-bottom:10px}
+
+<div class="" style=""> 
+   <div style="padding:20px; background: #f5dcdc; margin-bottom:10px">&lt article/ &gt;</div>
+   <div style="padding:20px; background: #f5dcdc; margin-bottom: 10px">&lt aside/ &gt;</div>
+   <div style="padding:20px; background: #dcf5dc;">&lt footer/ &gt;</div>
+</div>
+
+
+---
+class: whitebg
+
+#Floating layout
+
+    article {width:400px; margin-bottom: 10px; float: left}
+
+    aside   {width:200px; margin-bottom: 10px; float: right}
+  
+
+<div class="" style=""> 
+   <div style="padding:20px; background: #f5dcdc; margin:0 10px 10px 0;float:left;width:410px">
+   <h3>Pusekatt brakk</h3>
+<p>
+En gitarist spillte veldig elegant. Sjeiken dro en purk til han snakket høflig gjennom den lysegrønne busken. Da imponerte pusekatten ei lærerinne uansvarlig. Det ble stille og elgen viste hvordan den svære sauen fungerte. Sløve sebraer fyllte luften, og sabeltanntigeren løp over en skiftenøkkel. 
+</p>
+    </div>
+   <div style="padding:20px; background: #f5dcdc; margin:0 0 10px 0; width:210px; float:right">&lt aside/ &gt;</div>
+   <div style="padding:20px; background: #dcf5dc;">&lt footer/ &gt;</div>
+
+</div>
+
+
+
+
+---
+class: whitebg
+
+#Clearing float
+
+    article {width:400px; margin-bottom: 10px; float: left}
+
+    aside   {width:200px; margin-bottom: 10px; float: right}
+
+    footer {clear: both}
+  
+
+<div class="">
+   <div style="padding:20px; background: #f5dcdc; margin:0 10px 10px 0;float:left;width:410px">
+   <h3>Pusekatt brakk</h3>
+<p>
+En gitarist spillte veldig elegant. Sjeiken dro en purk til han snakket høflig gjennom den lysegrønne busken. Da imponerte pusekatten ei lærerinne uansvarlig. Det ble stille og elgen viste hvordan den svære sauen fungerte. Sløve sebraer fyllte luften, og sabeltanntigeren løp over en skiftenøkkel. 
+</p>
+    </div>
+   <div style="padding:20px; background: #f5dcdc; margin:0 0 10px 0; width:210px; float:right">&lt aside/ &gt;</div>
+   <div style="padding:20px; background: #dcf5dc;clear:both">&lt footer/ &gt;</div>
+</div>
+
+---
+class: whitebg
+
+#Collapse
+
+    article {margin-right: 10px; float:left}
+
+<div class="" style="">
+   <div style="padding:20px; background: #f5dcdc; margin-right: 10px; float:left">&lt article/ &gt;</div>
+   <div style="padding:20px; background: #f5dcdc; margin-right: 10px; float:left">&lt article/ &gt;</div>
+   <div style="padding:20px; background: #f5dcdc; margin-right: 10px; float:left">&lt article/ &gt;</div>
+</div>
+
+
+---
+class: whitebg
+
+#Clearfix
+
+    .container:after { 
+        content: "."; 
+        visibility: hidden; 
+        display: block; 
+        height: 0; 
+        clear: both;
+    }
+
+    article {margin-right: 10px; float:left}   
+
+<div class="css-example css-eaxample-clear">
+<div style="padding:20px; background: #f5dcdc; margin-right: 10px; float:left">&lt article/ &gt;</div>
+<div style="padding:20px; background: #f5dcdc; margin-right: 10px; float:left">&lt article/ &gt;</div>
+<div style="padding:20px; background: #f5dcdc; margin-right: 10px; float:left">&lt article/ &gt;</div>
+</div>
+
+<br><br><br><br>
+
+.center[![devtools](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/devtools-small.jpg)]
+
+<!-- 
+
+http://css.maxdesign.com.au/floatutorial/introduction.htm
+http://alistapart.com/article/css-floats-101
+http://css-tricks.com/all-about-floats/
+http://coding.smashingmagazine.com/2007/05/01/css-float-theory-things-you-should-know/
+-->
+
+---
+class: middle fullscreen higher blackheader
+
+![CSS](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/101/css-position-misplaced.jpg)
+
+<div class="" style="position:absolute;top:9%;left:3%;">
+<h1>Position</h1>
+</div>
+
+
+<div class="source">
+http://flic.kr/p/2yYGP
+</div>
+<!-- http://alistapart.com/article/css-positioning-101 -->
+
+---
+class: whitebg
+
+#Static
+
+    .box { 
+        position: static; /* Default */
+        width: 100px; 
+        height: 100px
+    }
+
+<div class="">
+    <div class="pbox" style="background:#f5dcdc">A</div>
+    <div class="pbox" style="background:#dcf5dc">B</div>
+    <div class="pbox" style="background:#44accf">C</div>
+</div>
+
+---
+class: whitebg
+
+#Relative
+
+    .box { 
+        position: static; /* Default */
+        width: 100px; 
+        height: 100px
+       }
+    .box:nth-child(2) { 
+        position:relative; 
+        left: 80px;
+        top: 20px
+      }
+
+<div class="">
+    <div class="pbox" style="background:#f5dcdc">A</div>
+    <div class="pbox" style="background:#dcf5dc;position:relative; left: 80px; top:20px">B</div>
+    <div class="pbox" style="background:#44accf">C</div>
+</div>
+
+---
+class: whitebg
+
+#Absolute
+
+    .box { 
+        position: static; /* Default */
+        width: 100px; 
+        height: 100px
+       }
+    .box:nth-child(2) { 
+        position:absolute; 
+        right: 0;
+        top: 0
+      }
+
+<div class="">
+    <div class="pbox" style="background:#f5dcdc">A</div>
+    <div class="pbox" style="background:#dcf5dc;position:absolute; right: 0; top:0">B</div>
+    <div class="pbox" style="background:#44accf">C</div>
+</div>
+
+---
+class: whitebg
+
+#Absolute
+
+    .container {
+        position:relative;
+        }
+    .box { 
+        position: static; /* Default */
+        width: 100px; 
+        height: 100px
+       }
+    .box:nth-child(2) { 
+        position:absolute; 
+        right: 0;
+        top: 0
+      }
+
+<div class="" style="position:relative">
+    <div class="pbox" style="background:#f5dcdc">A</div>
+    <div class="pbox" style="background:#dcf5dc;position:absolute; right: 0; top:0">B</div>
+    <div class="pbox" style="background:#44accf">C</div>
+</div>
+
+---
+class: whitebg
+
+#Fixed
+
+    div:first-child {
+        position: fixed;
+        z-index: 2
+    }
+
+<div class="" style="overflow:auto;height:190px;">
+    <div class="" style="background:#f5dcdc;position:fixed;z-index:2"><h2>1 (fixed)</h2></div>
+   ##2
+   ##3
+   ##4
+   ##5
+   ##6
+</div>
+
+
+
+---
+class: whitebg
+
+# Awesome
+
+    .lightbox {
+        position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: rgba (0,0,0,.65)
+    }
+    .lightbox div {
+        position:absolute;top:30%;left:50%;margin-left:-208px;box-shadow: 10px 10px 10px
+    }
+
+<div style="position:fixed;top:0;bottom:0;left:0;right:0;background:rgba(0,0,0,.75);">
+
+<div style="position:absolute;top:31%;left:50%;margin-left:-208px;background:#fff;padding:20px 40px;box-shadow: 10px 10px 10px">
+![Css is awesome](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/101/css-awesome.jpg)
+</div>
+</div>
+
+---
+
+# Sentrering
+
+      .centered {
+        text-align: center;
+        margin: 0 auto;
+      }
+
+???
+
+Å midtstille innhold i css kan være litt krøkkete. Her er to triks som hjelper deg.
+Vi skiller på å midtstille tekst og inline-innhold i en container, og det å midtstille en inline-container inne i en annen container.
+
+---
+
+class: middle center
+
+![devtools](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/devtools.jpg)
+
+???
+
+Vis www.db.no og vis hvordan de bruker posisjonering på forskjellige elementer.
+
+TIPS OSS - absolute
+
+Søkeboks - absolute
+
+Menyelementer (float left og right)
+
+Dagbladet-meny på topp etter scroll (fixed)
+
+---
+
+class: yellow middle center
+
+# Oppgave 3: Pimp my ulv.no
+
+##### Bruk den nye css-propertiene du har lært til å pimpe ulv.no
+
+
+---
+
+class: yellow middle center
+
+# Oppgave 4:
+
+Trening på å skrive selektorer
+
+http://flukeout.github.io/
+
+---
+
+class: middle fullscreen
+
+![catfight](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/catfight.jpg)
+
+<div class="overlay" style="top: 70%">
+<h1 style="font-size: 32px; text-transform: none;">Hva hvis flere selektorer slåss om samme element?</h1>
+</div>
+
+<div class="source">
+http://4.bp.blogspot.com/_98lRv3X-wZ0/S6oqqpjJqmI/AAAAAAAAADI/a8Es6Lc_hes/s1600/funny-cat-fight.jpg
+</div>
+
+
+???
+
+Hva mener jeg med "sloss om samme element"?
+
+---
+class: middle
+
+#1. Kommer stilene fra flere kilder?
+
+##Browser style sheets?
+##User style sheets?
+##Author style sheets?
+
+???
+
+Stiler kan nemlig komme fra flere kilder. Disse er nettleserstiler (såkalte defaults), brukerstyrte stiler (f.eks socialcastbredde) og utviklernes/sitenes egne stiler.
+
+<!-- http://www.maxdesign.com.au/articles/css-cascade/ -->
+
+---
+class: middle
+
+#2. Sortér stilarkene etter prioritet
+
+######5  Browser style sheets
+#####4  User style sheets
+####3  Author style sheets
+###2  !important i Author style sheets
+##1  !important i User style sheets
+
+---
+
+#3. Specificity
+
+    { color:red }
+
+&nbsp;
+
+<div class="center">
+<table class="specificity">
+<thead>
+    <tr><th>Inline</th><th>ID</th><th>Class</th><th>Element</th></tr>
+</thead>
+<tbody>
+    <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+</tbody>
+</table>
+</div>
+
+
+<!--http://css-tricks.com/specifics-on-css-specificity/
+http://www.standardista.com/css3/css-specificity/
+http://reference.sitepoint.com/css/specificity
+http://designshack.net/articles/css/what-the-heck-is-css-specificity/
+
+http://coding.smashingmagazine.com/2010/04/07/css-specificity-and-inheritance/ (arv og specificity)
+http://coding.smashingmagazine.com/2007/07/27/css-specificity-things-you-should-know/
+
+Kalkulator: http://specificity.keegan.st/
+
+CSS Specificity in 138 characters: CSS Specificity is 4 columns: inline=1|0|0|0, id=0|1|0|0, class=0|0|1|0, element=0|0|0|1 Left to right, the highest number takes priority
+-->
+
+---
+ #3. Specificity 
+
+    body div.featured { color:red }
+
+&nbsp;
+
+<div class="center">
+<table class="specificity">
+<thead>
+    <tr><th>Inline</th><th>ID</th><th>Class</th><th>Element</th></tr>
+</thead>
+<tbody>
+    <tr><td></td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+
+---
+#3. Specificity
+
+    body div.featured { color:red }
+
+&nbsp;
+
+<div class="center">
+<table class="specificity">
+<thead>
+    <tr><th>Inline</th><th>ID</th><th>Class</th><th>Element</th></tr>
+</thead>
+<tbody>
+    <tr><td></td><td></td><td></td><td>2</td></tr>
+</tbody>
+</table>
+</div>
+
+
+---
+#3. Specificity
+
+    body div.featured { color:red }
+
+&nbsp;
+
+<div class="center">
+<table class="specificity">
+<thead>
+    <tr><th>Inline</th><th>ID</th><th>Class</th><th>Element</th></tr>
+</thead>
+<tbody>
+    <tr><td></td><td></td><td>1</td><td>2</td></tr>
+</tbody>
+</table>
+</div>
+
+---
+#3. Specificity
+
+    body div.featured { color:red }
+
+&nbsp;
+
+<div class="center">
+<table class="specificity">
+<thead>
+    <tr><th>Inline</th><th>ID</th><th>Class</th><th>Element</th></tr>
+</thead>
+<tbody>
+    <tr><td></td><td>0</td><td>1</td><td>2</td></tr>
+</tbody>
+</table>
+</div>
+
+---
+#3. Specificity
+
+    body div.featured { color:red }
+
+&nbsp;
+
+<div class="center">
+<table class="specificity">
+<thead>
+    <tr><th>Inline</th><th>ID</th><th>Class</th><th>Element</th></tr>
+</thead>
+<tbody>
+    <tr><td>0</td><td>0</td><td>1</td><td>2</td></tr>
+</tbody>
+</table>
+</div>
+
+---
+
+#3. Specificity
+
+    #main #content a { color:red }
+
+&nbsp;
+
+<div class="center">
+<table class="specificity">
+<thead>
+    <tr><th>Inline</th><th>ID</th><th>Class</th><th>Element</th></tr>
+</thead>
+<tbody>
+    <tr><td></td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+
+---
+
+#3. Specificity
+
+    #main #content a { color:red }
+
+&nbsp;
+
+<div class="center">
+<table class="specificity">
+<thead>
+    <tr><th>Inline</th><th>ID</th><th>Class</th><th>Element</th></tr>
+</thead>
+<tbody>
+    <tr><td></td><td></td><td></td><td>1</td></tr>
+</tbody>
+</table>
+</div>
+
+---
+
+#3. Specificity
+
+    #main #content a { color:red }
+
+&nbsp;
+
+<div class="center">
+<table class="specificity">
+<thead>
+    <tr><th>Inline</th><th>ID</th><th>Class</th><th>Element</th></tr>
+</thead>
+<tbody>
+    <tr><td></td><td></td><td>0</td><td>1</td></tr>
+</tbody>
+</table>
+</div>
+
+---
+
+#3. Specificity
+
+    #main #content a { color:red }
+
+&nbsp;
+
+<div class="center">
+<table class="specificity">
+<thead>
+    <tr><th>Inline</th><th>ID</th><th>Class</th><th>Element</th></tr>
+</thead>
+<tbody>
+    <tr><td></td><td>2</td><td>0</td><td>1</td></tr>
+</tbody>
+</table>
+</div>
+
+---
+
+#3. Specificity
+
+    #main #content a { color:red }
+
+&nbsp;
+
+<div class="center">
+<table class="specificity">
+<thead>
+    <tr><th>Inline</th><th>ID</th><th>Class</th><th>Element</th></tr>
+</thead>
+<tbody>
+    <tr><td>0</td><td>2</td><td>0</td><td>1</td></tr>
+</tbody>
+</table>
+</div>
+
+
+---
+#3. Specificity
+
+
+    <p style="color:red" class="preface">Tekst</p>
+
+&nbsp;
+
+<div class="center">
+<table class="specificity">
+<thead>
+    <tr><th>Inline</th><th>ID</th><th>Class</th><th>Element</th></tr>
+</thead>
+<tbody>
+    <tr><td></td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+
+---
+#3. Specificity
+
+
+    <p style="color:red" class="preface">Tekst</p>
+
+&nbsp;
+
+<div class="center">
+<table class="specificity">
+<thead>
+    <tr><th>Inline</th><th>ID</th><th>Class</th><th>Element</th></tr>
+</thead>
+<tbody>
+    <tr><td></td><td></td><td></td><td>0</td></tr>
+</tbody>
+</table>
+</div>
+
+---
+#3. Specificity
+
+
+    <p style="color:red" class="preface">Tekst</p>
+
+&nbsp;
+
+<div class="center">
+<table class="specificity">
+<thead>
+    <tr><th>Inline</th><th>ID</th><th>Class</th><th>Element</th></tr>
+</thead>
+<tbody>
+    <tr><td></td><td></td><td>0</td><td>0</td></tr>
+</tbody>
+</table>
+</div>
+
+---
+#3. Specificity
+
+
+    <p style="color:red" class="preface">Tekst</p>
+
+&nbsp;
+
+<div class="center">
+<table class="specificity">
+<thead>
+    <tr><th>Inline</th><th>ID</th><th>Class</th><th>Element</th></tr>
+</thead>
+<tbody>
+    <tr><td></td><td>0</td><td>0</td><td>0</td></tr>
+</tbody>
+</table>
+</div>
+
+---
+#3. Specificity
+
+
+    <p style="color:red" class="preface">Tekst</p>
+
+&nbsp;
+
+<div class="center">
+<table class="specificity">
+<thead>
+    <tr><th>Inline</th><th>ID</th><th>Class</th><th>Element</th></tr>
+</thead>
+<tbody>
+    <tr><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+</tbody>
+</table>
+</div>
+
+---
+
+#3. Specificity
+
+    .preface {color: red !important}   
+
+
+---
+#3. Specificity NO-NO
+
+    .preface {color: red !important}
+
+&nbsp;
+
+<div class="center">
+<table class="specificity">
+     <colgroup>
+    <col span="4" style="background-color:red">
+  </colgroup>
+    <thead>
+ <tr>
+    
+ <th>Inline</th>
+ <th>ID</th>
+ <th>Class</th>
+ <th>Element</th>
+  <th>Inline</th>
+ <th>ID</th>
+ <th>Class</th>
+ <th>Element</th>
+ </tr>
+</thead>
+ <tbody>   
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+---
+
+class: middle
+
+#4. Fortsatt uavgjort?
+## Flere likt vektede selektorer fra samme sted?
+
+---
+
+class: middle
+
+<h2 style="font-size:2.5em;padding-left:3em">Den siste vinner!</h2>
+
+---
+
+class: middle center orange
+
+# Responsive Web Design
+
+---
+
+![Finn.no Stats](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/this-is-not-web.png)
+
+[bradfrostweb.com](http://bradfrostweb.com/blog/web/responsive-web-design-missing-the-point/)
+
+---
+
+class: middle center
+
+![Finn.no Stats](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/this-is-the-web.png)
+
+[bradfrostweb.com](http://bradfrostweb.com/blog/web/responsive-web-design-missing-the-point/)
+
+---
+
+class: middle center
+
+![Finn.no Stats](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/this-will-bethe-web.png)
+
+[bradfrostweb.com](http://bradfrostweb.com/blog/web/responsive-web-design-missing-the-point/)
+
+---
+
+class: middle center halfsized
+
+![Finn.no Stats](https://raw.githubusercontent.com/ewendel/frontend--bilder/master/responsivewebdesignfront.png)
+
+[ethanmarcotte.com](http://etchanmarcotte.com/)
+
+---
+
+
+
+    </textarea>
+    <script src="http://gnab.github.com/remark/downloads/remark-0.5.3.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var hljs = remark.highlighter.engine;
+    </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var slideshow = remark.create({
+          highlightStyle: 'solarized_light',
+          highlightLanguage: 'html'
+        }) ;
+      var a = [];
+      slideshow.addListener("slidein",function(b,c){if(a.indexOf(c)>-1)return;var d=$(b);d.find("p:empty").remove(),d.find(".front-page").length===0&&d.find("h1").wrapInner("<span>"),d.find(".pushed img").parent().wrapInner("<span class='img'>"),a.push(c)})
+    </script>
+  </body>
+</html>
